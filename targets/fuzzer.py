@@ -30,7 +30,7 @@ while( 1 == 1):
 		
     		child = subprocess.Popen("./jsonParser", stdin=subprocess.PIPE, stderr=subprocess.PIPE)
     		_, stdErrOut = child.communicate(input = testcase)
-    		if child.returncode != 0 or stdErrOut != "" :
+    		if child.returncode == -11 or stdErrOut != "" :
         		print "BROKEN SUCCESS TEST CASE (%d): %s" % (child.returncode, testcase)
         		print "|%s|" % stdErrOut
 			print 'In base64:\n' + base64.b64encode(testcase)
